@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             layout: 'fullscreen-overlay', // Encontro 2020
             theme: 'dark',
             categories: ['ensaio'],
-            title: 'Guiados pela fé e de mãos dadas, sob a bênção que uniu o nosso caminhar.',
+            title: '',
             subtitle: '',
             photos: ['fotos/ensaio/125A7511.jpg']
         },
@@ -596,8 +596,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
                 
             case 'fullscreen-overlay': {
-                const isAltar = !slideObj.subtitle;
-                if (isAltar) {
+                const hasText = slideObj.title || slideObj.subtitle;
+                if (!hasText) {
+                    slide.innerHTML = `
+                        <div class="slide-layout-fullscreen img-box-dual">
+                            <img class="blur-bg" src="${slideObj.photos[0]}" alt="Fundo">
+                            <img class="contain-fg" src="${slideObj.photos[0]}" alt="Fundo">
+                        </div>
+                    `;
+                } else if (!slideObj.subtitle) {
                     slide.innerHTML = `
                         <div class="slide-layout-altar-banner">
                             <div class="top-banner">${slideObj.title}</div>
