@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             layout: 'welcome',
             theme: 'dark',
             categories: ['all'],
-            title: 'Brunna & Lucas',
+            title: 'Lucas & Brunna',
             subtitle: 'NOSSA HISTÓRIA EM FOTOS',
             photos: ['https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format&fit=crop']
         },
@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
             theme: 'light',
             categories: ['all'],
             subtitle: 'BEM-VINDOS AO CASAMENTO DE',
-            title1: 'Brunna',
-            title2: 'Lucas',
-            date: 'MAIO 23, 2026',
+            title1: 'Lucas',
+            title2: 'Brunna',
+            date: 'JULHO 11, 2026',
             photos: ['fotos/ensaio/125A7534.jpg']
         },
         {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             categories: ['brunna'],
             badge: 'O PEDIDO',
             title: 'O SIM MAIS IMPORTANTE',
-            text: 'O momento em que nossas vidas decidiram caminhar na mesma direção. Dizer \'sim\' ao nosso amor foi a escolha mais fácil e feliz de nossas vidas, o começo oficial de um caminho feito de cumplicidade, carinho e sonhos compartilhados.',
+            text: '',
             photos: [
                 'fotos/bruna/foto46.jpeg', // Principal esquerda
                 'fotos/bruna/foto20.jpeg', // Pequena rodapé 1
@@ -145,6 +145,34 @@ document.addEventListener('DOMContentLoaded', () => {
             text: 'No arraiá da vida, meu coração acendeu a fogueira mais bonita quando te encontrou. Com direito a bandeirinhas, risadas e muito amor, você é a minha melhor companhia para dançar essa quadrilha eterna.',
             photos: [
                 'fotos/bruna/foto44.jpeg'
+            ]
+        },
+        {
+            layout: 'growing-together',
+            theme: 'dark',
+            categories: ['brunna'],
+            badge: 'CONQUISTAS • MEDICINA',
+            title: 'Crescendo Juntos',
+            text: 'Do sonho compartilhado nas salas de estudo ao orgulho de segurar o CRM. Trilhar o caminho da Medicina lado a lado foi a nossa maior jornada. Crescemos nos livros, nos plantões e na vida, descobrindo que cuidar do outro é ainda mais bonito quando feito a quatro mãos.',
+            bgPhoto: 'fotos/bruna/foto38.jpeg',
+            photos: [
+                'fotos/bruna/foto35.jpeg',
+                'fotos/bruna/foto38.jpeg',
+                'fotos/bruna/foto43.jpeg'
+            ]
+        },
+        {
+            layout: 'faith-theme',
+            theme: 'dark',
+            categories: ['brunna'],
+            badge: 'BÊNÇÃO • UNIÃO',
+            title: 'Nossa Fé',
+            text: 'Firmados na fé que nos guia e sob a bênção divina que conduz nossos passos. Encontramos no altar e na oração em conjunto o alicerce mais forte para o nosso amor. Diante de Deus, consagramos nosso caminho com a certeza de que a fé partilhada multiplica a nossa força e ilumina o nosso amanhã.',
+            bgPhoto: 'fotos/bruna/foto33.jpeg',
+            photos: [
+                'fotos/bruna/foto32.jpeg',
+                'fotos/bruna/foto33.jpeg',
+                'fotos/bruna/foto34.jpeg'
             ]
         },
         {
@@ -472,6 +500,71 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="arraia-badge">TRADIÇÕES • MOMENTOS</div>
                                 <h3>${slideObj.title}</h3>
                                 <div class="divider"></div>
+                                <p>${slideObj.text}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                break;
+
+            case 'growing-together':
+                slide.innerHTML = `
+                    <div class="slide-layout-growing">
+                        <img class="growing-bg-blur" src="${slideObj.bgPhoto || slideObj.photos[1]}" alt="Fundo">
+                        <div class="growing-content">
+                            <div class="text-side">
+                                <div class="growing-badge">${slideObj.badge}</div>
+                                <h3>${slideObj.title}</h3>
+                                <div class="divider"></div>
+                                <p>${slideObj.text}</p>
+                            </div>
+                            <div class="photos-side">
+                                <div class="growing-card card-1 img-box-dual">
+                                    <img class="blur-bg" src="${slideObj.photos[0]}" alt="Conquista 1">
+                                    <img class="contain-fg" src="${slideObj.photos[0]}" alt="Conquista 1">
+                                </div>
+                                <div class="growing-card card-2 img-box-dual">
+                                    <img class="blur-bg" src="${slideObj.photos[1]}" alt="Conquista 2">
+                                    <img class="contain-fg" src="${slideObj.photos[1]}" alt="Conquista 2">
+                                </div>
+                                <div class="growing-card card-3 img-box-dual">
+                                    <img class="blur-bg" src="${slideObj.photos[2]}" alt="Conquista 3">
+                                    <img class="contain-fg" src="${slideObj.photos[2]}" alt="Conquista 3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                break;
+
+            case 'faith-theme':
+                slide.innerHTML = `
+                    <div class="slide-layout-faith">
+                        <img class="faith-bg-blur" src="${slideObj.bgPhoto || slideObj.photos[1]}" alt="Fundo">
+                        <div class="faith-content-center">
+                            <div class="faith-gallery">
+                                <div class="faith-card">
+                                    <div class="img-box-dual">
+                                        <img class="blur-bg" src="${slideObj.photos[0]}" alt="Fé 1">
+                                        <img class="contain-fg" src="${slideObj.photos[0]}" alt="Fé 1">
+                                    </div>
+                                </div>
+                                <div class="faith-card">
+                                    <div class="img-box-dual">
+                                        <img class="blur-bg" src="${slideObj.photos[1]}" alt="Fé 2">
+                                        <img class="contain-fg" src="${slideObj.photos[1]}" alt="Fé 2">
+                                    </div>
+                                </div>
+                                <div class="faith-card">
+                                    <div class="img-box-dual">
+                                        <img class="blur-bg" src="${slideObj.photos[2]}" alt="Fé 3">
+                                        <img class="contain-fg" src="${slideObj.photos[2]}" alt="Fé 3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faith-text-card">
+                                <div class="faith-badge">${slideObj.badge}</div>
+                                <h3>${slideObj.title}</h3>
                                 <p>${slideObj.text}</p>
                             </div>
                         </div>
