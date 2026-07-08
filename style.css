@@ -1,0 +1,1992 @@
+/* ==========================================================================
+   Estilos Gerais e Variáveis (Tema Casamento Premium)
+   ========================================================================== */
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-light: #faf7f2; /* Marfim quente elegante para estilo revista */
+    --text-dark: #2c2520; /* Sépia escuro para leitura confortável no tema claro */
+    --text-light: #f8f9fa;
+    --text-muted: #8c827a;
+    --gold: #b38f4d; /* Dourado mais fechado, tom pastel de casamento */
+    --gold-hover: #d4af37;
+    --brown-banner: #6b5344; /* Sépia quente para banners */
+    --glass-border: rgba(179, 143, 77, 0.25);
+    --glass-bg: rgba(20, 20, 20, 0.85);
+    
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Montserrat', 'Inter', sans-serif;
+    
+    --transition-slow: 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-medium: 0.4s ease;
+    --transition-fast: 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ==========================================================================
+   Tela de Boas-Vindas (Welcome Screen)
+   ========================================================================== */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: radial-gradient(circle at center, #1e1b18 0%, #0d0c0b 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.welcome-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-card {
+    background: rgba(20, 18, 17, 0.8);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 3.5rem;
+    max-width: 580px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    animation: fadeInCard 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.wedding-rings {
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    animation: floatRings 4s ease-in-out infinite;
+}
+
+.welcome-card h1 {
+    font-family: var(--font-serif);
+    font-size: 3.2rem;
+    font-weight: 400;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-card .subtitle {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.divider {
+    height: 1px;
+    width: 90px;
+    background-color: var(--gold);
+    margin: 1.5rem auto;
+    opacity: 0.6;
+}
+
+.welcome-card .instruction {
+    font-size: 0.95rem;
+    color: #b0a7a0;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Upload de música */
+.music-upload-container {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.hidden-input {
+    display: none;
+}
+
+.music-name-label {
+    font-size: 0.85rem;
+    color: var(--gold);
+    max-width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   Botões e Toggles
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    padding: 0.9rem 1.8rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast) ease;
+}
+
+.btn-primary {
+    background-color: var(--gold);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(179, 143, 77, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--gold-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(179, 143, 77, 0.45);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(179, 143, 77, 0.1);
+    color: var(--gold-hover);
+    border-color: var(--gold-hover);
+}
+
+.btn-large {
+    padding: 1.1rem 2.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* ==========================================================================
+   Container Principal do Slideshow
+   ========================================================================== */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #0d0c0b;
+    overflow: hidden;
+}
+
+.slide-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Efeito de Vinheta (Aplica-se por cima dos slides para suavizar cantos) */
+.vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15) 85%, rgba(0,0,0,0.4) 100%);
+}
+
+/* ==========================================================================
+   Configurações Básicas de Slide e Transições
+   ========================================================================== */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    display: flex;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Slide Ativo */
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Tipografia de Slides */
+.slide h3 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    color: var(--text-dark);
+}
+
+.slide p {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* Transição de Fade padrão */
+.slide {
+    transition: opacity var(--transition-slow);
+}
+
+/* ==========================================================================
+   Componente de Imagem Dual-Layer Responsivo (Sem Cortes de Foto)
+   ========================================================================== */
+.img-box-dual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #0d0c0b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-box-dual img.blur-bg {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    filter: blur(30px) brightness(0.35) scale(1.15) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.img-box-dual img.contain-fg {
+    position: relative !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    z-index: 2 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+    pointer-events: none !important;
+}
+
+/* ==========================================================================
+   ESTILOS DE LAYOUTS DE SLIDES (Estilo Revista / Álbum)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. LAYOUT: Capa de Boas-Vindas (Welcome Cover)
+   -------------------------------------------------------------------------- */
+.slide-layout-welcome {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #0c0b0a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.slide-layout-welcome .cover-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.65;
+}
+
+.slide-layout-welcome .cover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
+}
+
+.slide-layout-welcome h1 {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 6px;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.slide-layout-welcome .cover-subtitle {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: var(--gold-hover);
+    font-weight: 300;
+}
+
+/* --------------------------------------------------------------------------
+   1b. LAYOUT: Boas-Vindas Introdução (Intro Welcome)
+   -------------------------------------------------------------------------- */
+.slide-layout-intro-welcome {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-light);
+}
+
+.slide-layout-intro-welcome .photo-col {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide-layout-intro-welcome .photo-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-layout-intro-welcome .intro-content-col {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    text-align: center;
+    background-color: var(--bg-light);
+}
+
+.slide-layout-intro-welcome .intro-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.slide-layout-intro-welcome .names-script {
+    font-family: 'Alex Brush', cursive;
+    font-size: 5.5rem;
+    color: #5c4033;
+    line-height: 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.slide-layout-intro-welcome .names-script span {
+    display: block;
+}
+
+.slide-layout-intro-welcome .names-script .ampersand {
+    font-size: 3rem;
+    margin: 0.2rem 0;
+    font-family: var(--font-serif);
+    color: var(--gold);
+}
+
+.slide-layout-intro-welcome .intro-date {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   2. LAYOUT: Sobre o Noivo/Noiva (About Groom / Bride)
+   -------------------------------------------------------------------------- */
+.slide-layout-about {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-layout-about .text-col {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 6rem;
+    padding-right: 4rem;
+}
+
+.slide-layout-about .title-container {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.slide-layout-about .desc-text {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #4a3c31;
+    font-weight: 300;
+    text-align: justify;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin-left: 0.2rem;
+}
+
+.slide-layout-about .section-name {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slide-layout-about .section-name::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background-color: var(--gold);
+}
+
+.slide-layout-about .about-title {
+    margin-bottom: 2rem;
+}
+
+.slide-layout-about .photo-col {
+    width: 55%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide-layout-about .photo-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT: Colagem - Como nos Conhecemos (We Meet Collage)
+   -------------------------------------------------------------------------- */
+.slide-layout-meet {
+    display: grid;
+    grid-template-rows: 1fr 180px;
+    width: 100%;
+    height: 100%;
+    padding: 4rem 5rem 2rem 5rem;
+    gap: 2rem;
+    background-color: var(--bg-light);
+}
+
+.slide-layout-meet .photos-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide-layout-meet .main-photo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.slide-layout-meet .main-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-layout-meet .side-photos {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.slide-layout-meet .side-photo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.slide-layout-meet .side-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-layout-meet .text-row {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    align-items: start;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.slide-layout-meet h3 {
+    font-size: 2.8rem;
+    text-transform: uppercase;
+}
+
+.slide-layout-meet p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT: O Amor Está no Ar (Love is in the Air - Banner + 2 Fotos)
+   -------------------------------------------------------------------------- */
+.slide-layout-air {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-layout-air .top-banner {
+    background-color: var(--brown-banner);
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 7px;
+    font-size: 1.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+.slide-layout-air .photos-row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 4rem;
+    max-height: 62vh;
+    margin: auto 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.slide-layout-air .photo-item {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    border-radius: 2px;
+}
+
+.slide-layout-air .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   5. LAYOUT: Fundo de Tela Cheia com Texto (Fullscreen Overlay)
+   -------------------------------------------------------------------------- */
+.slide-layout-fullscreen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.slide-layout-fullscreen .bg-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+}
+
+.slide-layout-fullscreen .overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.slide-layout-fullscreen h3 {
+    color: #ffffff;
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.slide-layout-fullscreen h4 {
+    font-family: var(--font-sans);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--gold-hover);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.slide-layout-fullscreen .deco-squares {
+    display: flex;
+    gap: 8px;
+    margin-top: 1.5rem;
+}
+
+.slide-layout-fullscreen .deco-square {
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   6. LAYOUT: Colagem Juntos (Moments Collage)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   6. LAYOUT: Colagem Juntos (Moments Collage)
+   -------------------------------------------------------------------------- */
+.slide-layout-collage-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 6rem;
+    box-sizing: border-box;
+}
+
+.slide-layout-collage-container .collage-bg-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: blur(40px) brightness(0.35) scale(1.15);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slide-layout-collage-container .collage-header-title {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    background: rgba(15, 12, 10, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 1.2rem 3rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+}
+
+.slide-layout-collage-row {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    flex: 1;
+    box-sizing: border-box;
+    max-height: 65vh;
+}
+
+.slide-layout-collage-row .collage-card {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    width: 31%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.slide-layout-collage-row .collage-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.collage-love-air .slide-layout-collage-row .collage-card:nth-child(2) img {
+    max-height: 82% !important;
+}
+
+@media (max-width: 768px) {
+    .slide-layout-collage-row {
+        flex-direction: column;
+        gap: 1.5rem;
+        max-height: none;
+    }
+    .slide-layout-collage-row .collage-card {
+        width: 90%;
+        height: 200px;
+    }
+    .slide-layout-collage-container .collage-header-title {
+        font-size: 1.2rem !important;
+        letter-spacing: 3px !important;
+        padding: 0.8rem 1.8rem !important;
+        width: 80%;
+        white-space: normal !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   7. LAYOUT: O Pedido / Slide Simples
+   -------------------------------------------------------------------------- */
+.slide-layout-proposal {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 4rem;
+    gap: 4rem;
+    align-items: center;
+}
+
+.slide-layout-proposal .photo-item-left {
+    width: 45%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.slide-layout-proposal .photo-item-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+}
+
+.slide-layout-proposal .content-right {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.slide-layout-proposal .badge {
+    color: var(--gold);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.slide-layout-proposal h3 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.slide-layout-proposal p {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #1c1815;
+    font-weight: 400;
+}
+
+.slide-layout-proposal .small-photo-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    height: auto;
+}
+
+.slide-layout-proposal .small-photo {
+    flex: 1;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.slide-layout-proposal .small-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    border-radius: 4px;
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,0.06));
+}
+
+/* --------------------------------------------------------------------------
+   8. LAYOUT: Agradecimento Final (Thank You)
+   -------------------------------------------------------------------------- */
+.slide-layout-thanks {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #0c0b0a;
+}
+
+.slide-layout-thanks .thanks-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.65;
+}
+
+.slide-layout-thanks .thanks-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.slide-layout-thanks h2 {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.slide-layout-thanks p {
+    font-size: 1.1rem;
+    color: var(--gold-hover);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+/* ==========================================================================
+   Cabeçalho de Casamento (Wedding Header)
+   ========================================================================== */
+.wedding-header {
+    position: absolute;
+    top: 2.5rem;
+    left: 3rem;
+    z-index: 10;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+}
+
+.wedding-header h2 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    margin-bottom: 0.1rem;
+}
+
+/* Ajusta cor de acordo com o tipo de slide ativo (definido via JS) */
+.slideshow-container.dark-slide-active .wedding-header h2 {
+    color: #ffffff;
+}
+
+.wedding-header p {
+    font-size: 0.8rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* ==========================================================================
+   Barra de Progresso (Transition Progress Bar)
+   ========================================================================== */
+.progress-bar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 15;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--gold);
+    box-shadow: 0 0 5px var(--gold);
+    transition: width 0.05s linear;
+}
+
+/* ==========================================================================
+   Painel de Controle Flutuante (Glassmorphism Control Panel)
+   ========================================================================== */
+.control-panel {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: auto;
+    max-width: 90%;
+    background: var(--glass-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 0.8rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ocultação dos controles na inatividade do mouse */
+.slideshow-container.hide-interface .control-panel {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+    pointer-events: none;
+}
+
+.slideshow-container.hide-interface .wedding-header {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Linhas do Painel de Controle */
+.control-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.main-controls {
+    gap: 1.8rem;
+}
+
+.secondary-controls {
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.6rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Botões do Painel */
+.ctrl-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast) ease;
+}
+
+.ctrl-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+.ctrl-btn:hover {
+    color: var(--gold-hover);
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: scale(1.08);
+}
+
+.ctrl-btn:active {
+    transform: scale(0.95);
+}
+
+/* Botão central Play/Pause destacado */
+.ctrl-btn.play-btn {
+    background-color: var(--gold);
+    color: #ffffff;
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 4px 10px rgba(179, 143, 77, 0.2);
+}
+
+.ctrl-btn.play-btn:hover {
+    background-color: var(--gold-hover);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(179, 143, 77, 0.4);
+}
+
+.ctrl-btn.play-btn svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* Botões pequenos e Toggles */
+.ctrl-btn-small {
+    background: transparent;
+    border: none;
+    color: #b0a7a0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast) ease;
+}
+
+.ctrl-btn-small svg {
+    width: 20px;
+    height: 20px;
+}
+
+.ctrl-btn-small:hover {
+    color: var(--text-light);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.toggle-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 0.4rem 0.9rem;
+    color: #b0a7a0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    transition: all var(--transition-fast) ease;
+}
+
+.toggle-btn:hover {
+    color: var(--text-light);
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.toggle-btn.active {
+    color: var(--gold-hover);
+    border-color: var(--gold);
+    background-color: rgba(179, 143, 77, 0.15);
+}
+
+/* Grupo de Filtros */
+.filter-group {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    color: #b0a7a0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all var(--transition-fast) ease;
+}
+
+.filter-btn:hover {
+    color: var(--text-light);
+}
+
+.filter-btn.active {
+    background-color: var(--gold);
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Divisores */
+.v-divider {
+    width: 1px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Configurações Individuais (Select e Slider) */
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #b0a7a0;
+}
+
+.setting-item label {
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.styled-select {
+    background-color: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-light);
+    border-radius: 12px;
+    padding: 0.3rem 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+}
+
+.styled-select:focus {
+    border-color: var(--gold);
+}
+
+.styled-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.styled-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    transition: transform var(--transition-fast);
+}
+
+.styled-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background-color: var(--gold-hover);
+}
+
+/* ==========================================================================
+   Notificações Temporárias (Toast)
+   ========================================================================== */
+.toast-notification {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+    background-color: rgba(10, 10, 10, 0.85);
+    border: 1px solid var(--gold);
+    color: var(--text-light);
+    padding: 0.7rem 1.3rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all var(--transition-medium);
+    pointer-events: none;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Classes Utilitárias
+   ========================================================================== */
+.hidden {
+    display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   9. LAYOUT: Legenda Cinematográfica (Cinematic Subtitle)
+   -------------------------------------------------------------------------- */
+.slide-layout-cinematic-subtitle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.slide-layout-cinematic-subtitle .bg-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.slide-layout-cinematic-subtitle .subtitle-banner {
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    width: 90%;
+    background: rgba(15, 12, 10, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2.2rem 3rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+    z-index: 2;
+}
+
+.slide-layout-cinematic-subtitle .subtitle-text {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: #ffffff;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* --------------------------------------------------------------------------
+   9b. LAYOUT: Divisão Diagonal Caricaturas (Split Caricature)
+   -------------------------------------------------------------------------- */
+.slide-layout-split-caricature {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-light);
+    box-sizing: border-box;
+}
+
+.slide-layout-split-caricature .top-banner-full {
+    background-color: var(--brown-banner);
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 7px;
+    font-size: 1.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    z-index: 2;
+}
+
+.slide-layout-split-caricature .content-row {
+    flex: 1;
+    display: flex;
+    gap: 3rem;
+    padding: 3rem 4rem;
+    box-sizing: border-box;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.slide-layout-split-caricature .left-photo-box {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-layout-split-caricature .left-photo-box img {
+    max-width: 80% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.08)) !important;
+}
+
+.slide-layout-split-caricature .right-photo-box {
+    width: 55%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.slide-layout-split-caricature .right-photo-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    filter: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   9c. LAYOUT: Passeio Cânion (Canyon Adventure Layout)
+   -------------------------------------------------------------------------- */
+.slide-layout-canyon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #0f0d0c;
+    overflow: hidden;
+}
+
+.slide-layout-canyon .canyon-bg-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(25px) brightness(0.25) scale(1.1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slide-layout-canyon .canyon-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 5rem 6rem;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 5rem;
+}
+
+.slide-layout-canyon .photos-side {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.slide-layout-canyon .canyon-card {
+    width: 260px;
+    aspect-ratio: 3 / 4;
+    background: #ffffff;
+    padding: 0.8rem 0.8rem 2.5rem 0.8rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    position: absolute;
+    transition: transform var(--transition-medium);
+}
+
+.slide-layout-canyon .canyon-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 2px;
+}
+
+.slide-layout-canyon .card-1 {
+    transform: translate(-90px, -20px) rotate(-4deg);
+    z-index: 2;
+}
+
+.slide-layout-canyon .card-2 {
+    transform: translate(90px, 20px) rotate(4deg);
+    z-index: 3;
+}
+
+.slide-layout-canyon .canyon-card:hover {
+    transform: scale(1.05) translate(var(--hover-x, 0), var(--hover-y, 0)) rotate(var(--hover-r, 0));
+    z-index: 10;
+}
+.slide-layout-canyon .card-1:hover {
+    --hover-x: -90px;
+    --hover-y: -20px;
+    --hover-r: -2deg;
+}
+.slide-layout-canyon .card-2:hover {
+    --hover-x: 90px;
+    --hover-y: 20px;
+    --hover-r: 2deg;
+}
+
+.slide-layout-canyon .text-side {
+    width: 50%;
+    background: rgba(20, 18, 16, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 3.5rem 4rem;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.slide-layout-canyon .adventure-badge {
+    color: var(--gold);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+}
+
+.slide-layout-canyon h3 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin: 0 0 1.5rem 0;
+    font-weight: 400;
+}
+
+.slide-layout-canyon .divider {
+    width: 60px;
+    height: 2px;
+    background-color: var(--gold);
+    margin-bottom: 2rem;
+}
+
+.slide-layout-canyon p {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   9d. LAYOUT: Arraiá de Festa Junina (Arraia Moments Layout)
+   -------------------------------------------------------------------------- */
+.slide-layout-arraia {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #1a0f08;
+    overflow: hidden;
+}
+
+.slide-layout-arraia .arraia-bg-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(30px) brightness(0.22) sepia(0.3) scale(1.1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slide-layout-arraia .arraia-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 5rem 6rem;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 5rem;
+}
+
+.slide-layout-arraia .photo-side {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.slide-layout-arraia .arraia-frame {
+    width: 320px;
+    height: 440px;
+    background: #ffffff;
+    padding: 0.8rem 0.8rem 3.5rem 0.8rem;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+    position: relative;
+    box-sizing: border-box;
+    transform: rotate(-2deg);
+    transition: transform var(--transition-medium);
+}
+
+.slide-layout-arraia .arraia-frame:hover {
+    transform: scale(1.03) rotate(0deg);
+}
+
+.slide-layout-arraia .arraia-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 2px;
+}
+
+.slide-layout-arraia .mini-flags {
+    position: absolute;
+    top: -15px;
+    left: 10%;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 5;
+}
+
+.slide-layout-arraia .flag {
+    width: 18px;
+    height: 25px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 75%, 0% 100%);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.slide-layout-arraia .flag.blue { background-color: #3b82f6; }
+.slide-layout-arraia .flag.yellow { background-color: #eab308; }
+.slide-layout-arraia .flag.red { background-color: #ef4444; }
+.slide-layout-arraia .flag.green { background-color: #22c55e; }
+.slide-layout-arraia .flag.orange { background-color: #f97316; }
+
+.slide-layout-arraia .text-side {
+    width: 50%;
+    background: rgba(26, 17, 10, 0.50);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 3.5rem 4rem;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.slide-layout-arraia .arraia-badge {
+    color: #f59e0b;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+}
+
+.slide-layout-arraia h3 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin: 0 0 1.5rem 0;
+    font-weight: 400;
+}
+
+.slide-layout-arraia .divider {
+    width: 60px;
+    height: 2px;
+    background-color: #f59e0b;
+    margin-bottom: 2rem;
+}
+
+.slide-layout-arraia p {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+/* ==========================================================================
+   Regras Gerais para Animação de Fotos nos Slides
+   ========================================================================== */
+/* Ken Burns para qualquer imagem dentro de slides com efeito ativado */
+.effect-kenburns img {
+    animation-duration: var(--kb-duration, 8s);
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+.slide.active.effect-kenburns.kb-in img {
+    animation-name: kbZoomIn;
+}
+.slide.active.effect-kenburns.kb-out img {
+    animation-name: kbZoomOut;
+}
+.slide.active.effect-kenburns.kb-left img {
+    animation-name: kbPanLeft;
+}
+.slide.active.effect-kenburns.kb-right img {
+    animation-name: kbPanRight;
+}
+
+/* ==========================================================================
+   Keyframes Animações
+   ========================================================================== */
+
+/* Boas-Vindas */
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatRings {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-6px) rotate(2deg);
+    }
+}
+
+/* ==========================================================================
+   Ajustes Responsivos
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .slide-layout-about .text-col {
+        padding: 3rem;
+    }
+    .slide-layout-meet {
+        padding: 2rem;
+        grid-template-rows: 1fr auto;
+    }
+    .slide-layout-meet .text-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    .slide-layout-collage {
+        padding: 2rem;
+    }
+    .slide-layout-proposal {
+        padding: 3rem 2.5rem;
+        gap: 2.5rem;
+    }
+    .slide-layout-proposal .small-photo-row {
+        margin-top: 2rem;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-card {
+        padding: 2rem 1.5rem;
+    }
+    .welcome-card h1 {
+        font-size: 2.2rem;
+    }
+    .wedding-header {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+    .wedding-header h2 {
+        font-size: 1.4rem;
+    }
+    .slide h3 {
+        font-size: 2rem !important;
+    }
+    
+    /* Adaptar layouts para coluna única no celular */
+    .slide-layout-about {
+        flex-direction: column-reverse;
+    }
+    .slide-layout-about .text-col {
+        width: 100%;
+        height: 50%;
+        padding: 2rem;
+    }
+    .slide-layout-about .desc-text {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        padding-left: 1rem;
+    }
+    .slide-layout-about .photo-col {
+        width: 100%;
+        height: 50%;
+    }
+    .slide-layout-meet .photos-grid {
+        grid-template-columns: 1fr;
+    }
+    .slide-layout-meet .side-photos {
+        display: none;
+    }
+    .slide-layout-air .photos-row {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    .slide-layout-air .top-banner {
+        font-size: 1.1rem !important;
+        letter-spacing: 3px !important;
+        padding: 1rem !important;
+        height: auto !important;
+        min-height: 60px;
+        text-align: center;
+    }
+    .slide-layout-collage {
+        grid-template-columns: 1fr;
+    }
+    .slide-layout-collage .stacked-photos-col {
+        display: none;
+    }
+    .slide-layout-proposal {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+        overflow-y: auto;
+    }
+    .slide-layout-proposal .photo-item-left {
+        width: 100%;
+        height: 35vh;
+        flex-shrink: 0;
+    }
+    .slide-layout-proposal .content-right {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .slide-layout-proposal .small-photo-row {
+        display: flex;
+        height: auto;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .slide-layout-fullscreen .overlay-content {
+        padding: 2rem;
+    }
+    .slide-layout-fullscreen h3 {
+        font-size: 2.5rem;
+    }
+    
+    /* Adaptar split caricatures para coluna no celular */
+    .slide-layout-split-caricature .content-row {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.5rem;
+        overflow-y: auto;
+    }
+    .slide-layout-split-caricature .left-photo-box {
+        width: 100%;
+        height: 35vh;
+    }
+    .slide-layout-split-caricature .right-photo-box {
+        width: 100%;
+        height: 35vh;
+    }
+    .slide-layout-split-caricature .top-banner-full {
+        font-size: 1.1rem !important;
+        letter-spacing: 3px !important;
+        padding: 1rem !important;
+        height: auto !important;
+        min-height: 60px;
+        text-align: center;
+    }
+    
+    /* Adaptar layout de canyon para celular */
+    .slide-layout-canyon .canyon-content {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+        overflow-y: auto;
+    }
+    .slide-layout-canyon .photos-side {
+        width: 100%;
+        height: 38vh;
+        margin-top: 1rem;
+        flex-shrink: 0;
+    }
+    .slide-layout-canyon .canyon-card {
+        width: 140px;
+        padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+    }
+    .slide-layout-canyon .card-1 {
+        transform: translate(-45px, -10px) rotate(-4deg);
+    }
+    .slide-layout-canyon .card-2 {
+        transform: translate(45px, 10px) rotate(4deg);
+    }
+    .slide-layout-canyon .card-1:hover {
+        transform: scale(1.05) translate(-45px, -10px) rotate(-2deg);
+    }
+    .slide-layout-canyon .card-2:hover {
+        transform: scale(1.05) translate(45px, 10px) rotate(2deg);
+    }
+    .slide-layout-canyon .text-side {
+        width: 100%;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .slide-layout-canyon h3 {
+        font-size: 2rem;
+    }
+
+    /* Adaptar layout de arraiá para celular */
+    .slide-layout-arraia .arraia-content {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+        overflow-y: auto;
+    }
+    .slide-layout-arraia .photo-side {
+        width: 100%;
+        height: 38vh;
+        margin-top: 1.5rem;
+        flex-shrink: 0;
+    }
+    .slide-layout-arraia .arraia-frame {
+        width: 200px;
+        height: 280px;
+        padding: 0.5rem 0.5rem 2rem 0.5rem;
+    }
+    .slide-layout-arraia .mini-flags {
+        top: -10px;
+    }
+    .slide-layout-arraia .flag {
+        width: 12px;
+        height: 16px;
+    }
+    .slide-layout-arraia .text-side {
+        width: 100%;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .slide-layout-arraia h3 {
+        font-size: 2rem;
+    }
+    .control-panel {
+        padding: 0.6rem 1rem;
+        width: 95%;
+        border-radius: 16px;
+    }
+    .control-row {
+        gap: 0.8rem;
+    }
+    .secondary-controls {
+        gap: 0.6rem;
+        justify-content: center;
+    }
+    .v-divider {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   Opção de Música no Painel de Boas-Vindas
+   ========================================================================== */
+.music-toggle-container {
+    margin: 1.5rem 0 1rem 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.toggle-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--transition-fast);
+}
+
+.toggle-checkbox-label:hover {
+    color: var(--gold-hover);
+}
+
+.toggle-checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-checkbox-label .custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.toggle-checkbox-label input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: var(--gold);
+    border-color: var(--gold);
+}
+
+.toggle-checkbox-label input[type="checkbox"]:checked + .custom-checkbox::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
