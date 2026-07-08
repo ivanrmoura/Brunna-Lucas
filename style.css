@@ -2283,3 +2283,49 @@ body {
         line-height: 1.5;
     }
 }
+
+/* Layout para o slide do altar com banner no topo */
+.slide-layout-altar-banner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-light);
+}
+
+.slide-layout-altar-banner .top-banner {
+    background-color: var(--brown-banner);
+    height: auto;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 3rem;
+    box-sizing: border-box;
+    color: #ffffff !important;
+    font-family: var(--font-sans);
+    font-size: 1.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 2;
+    line-height: 1.5;
+}
+
+.slide-layout-altar-banner .photo-area {
+    flex: 1;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .slide-layout-altar-banner .top-banner {
+        height: auto;
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+}

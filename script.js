@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
             layout: 'fullscreen-overlay', // Encontro 2020
             theme: 'dark',
             categories: ['ensaio'],
-            title: 'COMO NOS CONHECEMOS',
-            subtitle: 'EM 2020',
+            title: 'Guiados pela fé e de mãos dadas, sob a bênção que uniu o nosso caminhar.',
+            subtitle: '',
             photos: ['fotos/ensaio/125A7511.jpg']
         },
         {
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlides = [...slidesData]; // Slides ativos pós-filtragem
     let currentIdx = 0;
     let isPlaying = false;
-    let duration = 6000; // Tempo de exibição de cada slide (6 segundos)
+    let duration = 8000; // Tempo de exibição de cada slide (8 segundos)
     let transitionType = 'kenburns'; // Tipo de transição
     let isShuffle = false;
     let shuffledIndices = [];
@@ -263,6 +263,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Configurar áudio padrão inicial
     bgMusic.src = DEFAULT_MUSIC_URL;
+
+    // Sincronizar UI do tempo de transição com a variável padrão (9s)
+    if (speedRange && speedLabel) {
+        speedRange.value = duration / 1000;
+        speedLabel.textContent = `${duration / 1000}s`;
+    }
+
+    // Configurar listeners dos botões de controle
+    if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', () => {
+            togglePlayPause();
+        });
+    }
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+        });
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+        });
+    }
 
     // ==========================================================================
     // 4. Inicialização e Áudio
@@ -572,22 +595,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 break;
                 
-            case 'fullscreen-overlay':
-                slide.innerHTML = `
-                    <div class="slide-layout-fullscreen img-box-dual">
-                        <img class="blur-bg" src="${slideObj.photos[0]}" alt="Fundo">
-                        <img class="contain-fg" src="${slideObj.photos[0]}" alt="Fundo">
-                        <div class="overlay-content">
-                            <h3>${slideObj.title}</h3>
-                            <h4>${slideObj.subtitle}</h4>
-                            <div class="deco-squares">
-                                <div class="deco-square"></div>
-                                <div class="deco-square"></div>
+            case 'fullscreen-overlay': {
+                const isAltar = !slideObj.subtitle;
+                if (isAltar) {
+                    slide.innerHTML = `
+                        <div class="slide-layout-altar-banner">
+                            <div class="top-banner">${slideObj.title}</div>
+                            <div class="photo-area img-box-dual">
+                                <img class="blur-bg" src="${slideObj.photos[0]}" alt="Altar">
+                                <img class="contain-fg" src="${slideObj.photos[0]}" alt="Altar">
                             </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                } else {
+                    slide.innerHTML = `
+                        <div class="slide-layout-fullscreen img-box-dual">
+                            <img class="blur-bg" src="${slideObj.photos[0]}" alt="Fundo">
+                            <img class="contain-fg" src="${slideObj.photos[0]}" alt="Fundo">
+                            <div class="overlay-content">
+                                <h3>${slideObj.title}</h3>
+                                <h4>${slideObj.subtitle}</h4>
+                                <div class="deco-squares">
+                                    <div class="deco-square"></div>
+                                    <div class="deco-square"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
                 break;
+            }
                 
             case 'collage-moments': {
                 const isLoveAir = slideObj.title === 'O Amor está no Ar';
